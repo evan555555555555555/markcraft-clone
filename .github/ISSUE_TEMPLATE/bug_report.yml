@@ -1,0 +1,57 @@
+name: Bug report
+description: Something in MarkCraft isn't working right
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. The more detail you give, the faster we can fix it.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What went wrong? What did you expect instead?
+      placeholder: "When I pressed M the music stopped but the icon still shows 'playing'..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Walk me through it.
+      placeholder: |
+        1. Open the game
+        2. Click [ ENTER MARKCRAFT ]
+        3. Press M
+        4. ...
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser / version
+      placeholder: "Chrome 120 on macOS 14"
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit SHA or release
+      description: "Run `git rev-parse HEAD` or paste the release tag."
+      placeholder: "abc1234"
+  - type: textarea
+    id: console
+    attributes:
+      label: Browser console errors
+      description: Open DevTools → Console → paste anything red.
+      render: shell
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and didn't find a duplicate
+          required: true
+        - label: I tried a hard refresh (Cmd/Ctrl+Shift+R) to rule out caching
+          required: true

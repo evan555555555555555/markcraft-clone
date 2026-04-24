@@ -1,0 +1,47 @@
+name: Feature request
+description: Suggest a new block, NPC, track, mechanic, or anything else
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Got an idea for MarkCraft? Tell us about it.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem or opportunity?
+      description: What's missing, what's clunky, or what would be cool?
+      placeholder: "The toolbar only shows 8 blocks. I want more variety..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What do you want to see?
+      description: Describe the feature. Concrete is better than abstract.
+      placeholder: "Add a second toolbar row, bound to Shift+1 through Shift+8..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      placeholder: "An inventory screen would also solve this but is bigger scope."
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Rough scope
+      options:
+        - Small (a few lines / one file)
+        - Medium (new script file, a few integrations)
+        - Large (multi-file, new system)
+        - I have no idea
+      default: 3
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Are you willing to work on this?
+      options:
+        - label: I'd like to open a PR for this myself
+        - label: I can help review / test a PR from someone else

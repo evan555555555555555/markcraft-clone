@@ -53,6 +53,23 @@ npm run build
 
 The `dist/` folder is fully self-contained — open `dist/index.html` in any browser, or zip it and email it. `vite.config.js` uses a relative base so no server config needed.
 
+## Run in Docker
+
+One command, full production build, served by nginx on port 8080:
+
+```bash
+docker compose up --build
+```
+
+Open <http://localhost:8080>. To stop: `docker compose down`.
+
+Plain Docker (no compose) works too:
+
+```bash
+docker build -t markcraft .
+docker run -p 8080:80 markcraft
+```
+
 ## Controls
 
 | Key | Action |

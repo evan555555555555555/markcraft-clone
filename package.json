@@ -2,8 +2,26 @@
   "name": "markcraft",
   "private": true,
   "version": "1.0.0",
-  "description": "MarkCraft \u2014 a Three.js voxel rescue mission for our professor.",
+  "description": "MarkCraft \u2014 a Three.js voxel rescue mission. Save the professor, fight the Taleb dragon, tour Harvard Yard.",
   "type": "module",
+  "homepage": "https://evan555555555555555.github.io/markcraft-clone/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evan555555555555555/markcraft-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evan555555555555555/markcraft-clone/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "threejs",
+    "voxel",
+    "minecraft-clone",
+    "game",
+    "webgl",
+    "vite",
+    "open-source"
+  ],
   "scripts": {
     "start": "vite --host 0.0.0.0",
     "dev": "vite --host 0.0.0.0",
