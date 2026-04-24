@@ -333,11 +333,14 @@ export class WorldChunk extends THREE.Group {
   * @returns {{id: number, instanceId: number}}
   */
   getBlock(x, y, z) {
-    if (this.inBounds(x, y, z)) {
-      return this.data[x][y][z];
-    } else {
-      return null;
-    }
+    if (!this.inBounds(x, y, z)) return null;
+    // Defensive: chunk may exist in the chunk-map before its data array is
+    // fully populated (entities can fire while neighbor chunks are mid-gen).
+    const col = this.data[x];
+    if (!col) return null;
+    const row = col[y];
+    if (!row) return null;
+    return row[z] || null;
   }
 
   /**

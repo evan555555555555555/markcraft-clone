@@ -1,12 +1,14 @@
 {
-  "name": "minecraft-test-2",
+  "name": "markcraft",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "MarkCraft \u2014 a Three.js voxel rescue mission for our professor.",
   "type": "module",
   "scripts": {
+    "start": "vite --host 0.0.0.0",
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0 --port 4173"
   },
   "devDependencies": {
     "vite": "^4.4.5"

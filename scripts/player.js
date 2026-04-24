@@ -47,9 +47,8 @@ export class Player {
     scene.add(this.camera);
     scene.add(this.cameraHelper);
 
-    // Hide/show instructions based on pointer controls locking/unlocking
-    this.controls.addEventListener('lock', this.onCameraLock.bind(this));
-    this.controls.addEventListener('unlock', this.onCameraUnlock.bind(this));
+    // No overlay to manage — the legacy "click to play" screen has been
+    // removed entirely. main.js handles pointer lock + drag-look fallback.
 
     // The tool is parented to the camera
     this.camera.add(this.tool.container);
@@ -80,16 +79,6 @@ export class Player {
     document.addEventListener('keyup', this.onKeyUp.bind(this));
     document.addEventListener('keydown', this.onKeyDown.bind(this));
     document.addEventListener('mousedown', this.onMouseDown.bind(this));
-  }
-
-  onCameraLock() {
-    document.getElementById('overlay').style.visibility = 'hidden';
-  }
-
-  onCameraUnlock() {
-    if (!this.debugCamera) {
-      document.getElementById('overlay').style.visibility = 'visible';
-    }
   }
 
   /**
@@ -148,20 +137,22 @@ export class Player {
    * @param {Number} dt 
    */
   applyInputs(dt) {
-    if (this.controls.isLocked === true) {
-      this.velocity.x = this.input.x * (this.sprinting ? 1.5 : 1);
-      this.velocity.z = this.input.z * (this.sprinting ? 1.5 : 1);
-      this.controls.moveRight(this.velocity.x * dt);
-      this.controls.moveForward(this.velocity.z * dt);
-      this.position.y += this.velocity.y * dt;
+    // Movement runs whenever the game is active. Pointer lock is no longer
+    // gating gameplay — drag-look fallback keeps first-person working in
+    // sandboxed iframes where lock is blocked.
+    this.velocity.x = this.input.x * (this.sprinting ? 1.5 : 1);
+    this.velocity.z = this.input.z * (this.sprinting ? 1.5 : 1);
+    this.controls.moveRight(this.velocity.x * dt);
+    this.controls.moveForward(this.velocity.z * dt);
+    this.position.y += this.velocity.y * dt;
 
-      if (this.position.y < 0) {
-        this.position.y = 0;
-        this.velocity.y = 0;
-      }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y = 0;
     }
 
-    document.getElementById('info-player-position').innerHTML = this.toString();
+    const el = document.getElementById('info-player-position');
+    if (el) el.innerHTML = this.toString();
   }
 
   /**
@@ -230,11 +221,8 @@ export class Player {
    * @param {KeyboardEvent} event 
    */
   onKeyDown(event) {
-    if (!this.controls.isLocked) {
-      this.debugCamera = false;
-      this.controls.lock();
-    }
-
+    // No more auto-lock spam on every key press. main.js handles pointer
+    // lock acquisition; drag-look picks up the slack when lock is blocked.
     switch (event.code) {
       case 'Digit0':
       case 'Digit1':
@@ -280,10 +268,6 @@ export class Player {
         if (this.onGround) {
           this.velocity.y += this.jumpSpeed;
         }
-        break;
-      case 'F10':
-        this.debugCamera = true;
-        this.controls.unlock();
         break;
     }
   }

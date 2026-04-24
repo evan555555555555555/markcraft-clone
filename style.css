@@ -5,15 +5,14 @@
   font-style: normal;
 }
 
-/* remove white border from page */
 body {
   margin: 0;
-  font-family: 'Minecraft';
+  font-family: 'Minecraft', monospace;
+  background: #000;
+  overflow: hidden;
 }
 
-h1 {
-  font-size: 3em;
-}
+h1 { font-size: 3em; }
 
 #info {
   position: absolute;
@@ -29,7 +28,6 @@ h1 {
   position: fixed;
   bottom: 8px;
   width: 100%;
-
   display: flex;
   justify-content: center;
 }
@@ -46,7 +44,7 @@ h1 {
 .toolbar-icon {
   width: 64px;
   height: 64px;
-  outline: 4px solid rgb(58, 58, 58);;
+  outline: 4px solid rgb(58, 58, 58);
 }
 
 .toolbar-icon.selected {
@@ -55,19 +53,20 @@ h1 {
 
 #overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   background-color: #00000080;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 2em;
   color: white;
   text-align: center;
+}
+
+#overlay .hint {
+  font-size: 0.5em;
+  opacity: 0.8;
+  margin: 8px 0 24px;
 }
 
 #status {
@@ -76,4 +75,225 @@ h1 {
   left: 8px;
   font-size: 2em;
   color: white;
+}
+
+/* ===== MarkCraft loading screen ===== */
+#mc-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #050510;
+  color: #fff;
+  font-family: 'Minecraft', monospace;
+  overflow: hidden;
+}
+
+#mc-loading-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+
+#mc-loading-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  padding: 220px 36px 36px;
+  box-sizing: border-box;
+}
+
+#mc-story {
+  background: rgba(0, 0, 0, 0.72);
+  border: 4px solid #d4a040;
+  box-shadow: 0 0 0 4px #000, 0 0 32px rgba(212, 160, 64, 0.4);
+  padding: 22px 28px;
+  align-self: end;
+  max-height: 60vh;
+  overflow-y: auto;
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: 0.5px;
+}
+
+#mc-story h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  color: #f4e3b2;
+  text-shadow: 3px 3px 0 #000;
+  letter-spacing: 2px;
+}
+
+#mc-story p {
+  margin: 8px 0;
+}
+
+.hl { color: #ffd54a; }
+.hl.red { color: #ff6464; }
+.hl.green { color: #7af07a; }
+.hl.gold { color: #f4e3b2; }
+.hl.cyan { color: #5ad8e0; }
+
+.mission {
+  margin-top: 14px !important;
+  padding: 10px 14px;
+  background: rgba(122, 16, 16, 0.45);
+  border-left: 4px solid #ff6464;
+}
+
+#mc-credits {
+  margin-top: 14px;
+  font-size: 12px;
+  opacity: 0.65;
+  font-style: italic;
+}
+
+#mc-controls {
+  background: rgba(0, 0, 0, 0.78);
+  border: 4px solid #5ad8e0;
+  box-shadow: 0 0 0 4px #000, 0 0 32px rgba(90, 216, 224, 0.4);
+  padding: 24px;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#mc-keys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 14px;
+  font-size: 13px;
+  color: #cfe8ff;
+}
+
+#mc-keys kbd {
+  display: inline-block;
+  background: #1a1a2a;
+  color: #ffd54a;
+  border: 2px solid #5ad8e0;
+  padding: 1px 6px;
+  margin-right: 4px;
+  font-family: 'Minecraft', monospace;
+  font-size: 12px;
+  min-width: 32px;
+  text-align: center;
+}
+
+#mc-start-btn {
+  font-family: 'Minecraft', monospace;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #000;
+  background: linear-gradient(180deg, #ffd54a 0%, #d4a040 50%, #7a3010 100%);
+  border: 4px solid #000;
+  padding: 16px 12px;
+  cursor: pointer;
+  text-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 2px #d4a040, 0 8px 0 #5a1a08;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#mc-start-btn:hover {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 2px #ffd54a, 0 6px 0 #5a1a08;
+}
+
+#mc-start-btn:active {
+  transform: translateY(8px);
+  box-shadow: 0 0 0 2px #d4a040, 0 0 0 #5a1a08;
+}
+
+#mc-music-hint {
+  font-size: 11px;
+  color: #ffd54a;
+  text-align: center;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  #mc-loading-content {
+    grid-template-columns: 1fr;
+    padding: 180px 16px 16px;
+  }
+}
+
+/* ===== Music player (corner) ===== */
+#mc-music-player {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 5000;
+  background: rgba(10, 10, 16, 0.85);
+  border: 3px solid #d4a040;
+  box-shadow: 0 0 0 3px #000, 0 6px 0 #5a1a08;
+  padding: 8px 10px;
+  font-family: 'Minecraft', monospace;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 240px;
+}
+
+.mc-mp-row {
+  display: flex;
+  gap: 4px;
+}
+
+.mc-mp-btn {
+  font-family: 'Minecraft', monospace;
+  font-size: 14px;
+  color: #1a0a05;
+  background: linear-gradient(180deg, #ffd54a 0%, #d4a040 100%);
+  border: 2px solid #000;
+  padding: 4px 8px;
+  cursor: pointer;
+  min-width: 28px;
+  line-height: 1;
+}
+
+.mc-mp-btn:hover {
+  background: linear-gradient(180deg, #fff080 0%, #f4c060 100%);
+}
+
+.mc-mp-btn:active {
+  transform: translateY(1px);
+}
+
+.mc-mp-track {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.mc-mp-title {
+  font-size: 13px;
+  color: #ffd54a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.5px;
+}
+
+.mc-mp-artist {
+  font-size: 10px;
+  color: #cfe8ff;
+  opacity: 0.85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mc-mp-counter {
+  font-size: 10px;
+  color: #5ad8e0;
+  letter-spacing: 1px;
+  flex-shrink: 0;
 }
