@@ -201,6 +201,10 @@ Run `npm run build` locally before pushing — the build must succeed.
 - 📰 **[Changelog](CHANGELOG.md)** — what's new, version by version
 - ❓ **[FAQ](FAQ.md)** — common questions before you ask
 
+## 🔐 How this repo is protected
+
+All changes to `main` require a pull request. Force-pushes are blocked. Branch deletion is blocked. Secret scanning + push protection is on. Read **[GOVERNANCE.md](GOVERNANCE.md)** for the full threat model, branch protection rules, and who can do what. Contributors don't need to do anything special — just open PRs like normal.
+
 ## 🔧 Troubleshooting
 
 <details>
