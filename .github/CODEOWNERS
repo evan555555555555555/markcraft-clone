@@ -1,0 +1,8 @@
+# Default owners for the whole repo — all PRs get their review request by default.
+*       @evan555555555555555
+
+# Narrow areas (uncomment and edit as the team grows):
+# /scripts/entities.js        @evan555555555555555
+# /scripts/harvard.js         @evan555555555555555
+# /scripts/physics.js         @evan555555555555555
+# /.github/                   @evan555555555555555
