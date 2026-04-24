@@ -17,8 +17,8 @@ All notable changes to MarkCraft are documented here. This project follows [Sema
 - Loading screen with WebGL detection and lore intro ([`scripts/loadingScreen.js`](scripts/loadingScreen.js))
 - Dev panel toggle (`U` key) for tweaking physics, biomes, draw distance
 - Fireworks, snow particles, neon stages
-- CI build check on every PR
-- GitHub Pages auto-deploy on push to `main`
+- `npm run deploy` — one-command redeploy to the `gh-pages` branch
+- GitHub Pages serving the live site from the `gh-pages` branch
 - Docker support (`Dockerfile`, `docker-compose.yml`)
 - Full contributor docs (`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`)
 - Issue and PR templates

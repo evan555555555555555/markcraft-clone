@@ -192,7 +192,7 @@ The track switcher in the top-left picks them up automatically. That's it. No bu
 
 **Great first PRs:** add a music track · add a new NPC or speech quote · add a new block type · fix something on the bug board.
 
-All PRs auto-build on Node 18/20/22 via GitHub Actions CI. Make sure `npm run build` succeeds locally before pushing.
+Run `npm run build` locally before pushing — the build must succeed.
 
 ## 💬 Community
 
