@@ -2,11 +2,14 @@
 
 > A voxel rescue mission. Built in Three.js. Save the professor, fight the Taleb dragon, tour Harvard Yard.
 
-[![Deploy](https://github.com/evan555555555555555/markcraft-clone/actions/workflows/deploy.yml/badge.svg)](https://github.com/evan555555555555555/markcraft-clone/actions/workflows/deploy.yml)
+[![Live Site](https://img.shields.io/website?url=https%3A%2F%2Fevan555555555555555.github.io%2Fmarkcraft-clone%2F&label=play%20now&up_message=online&up_color=brightgreen)](https://evan555555555555555.github.io/markcraft-clone/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Built with Three.js](https://img.shields.io/badge/built%20with-Three.js-000000?logo=three.js)](https://threejs.org)
 
-## **[▶ Play it now](https://evan555555555555555.github.io/markcraft-clone/)**
+## **[▶ Play it now in your browser](https://evan555555555555555.github.io/markcraft-clone/)**
+
+No install. No download. Just click and play.
 
 ![MarkCraft screenshot](public/screenshot.png)
 
