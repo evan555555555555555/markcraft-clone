@@ -1,25 +1,57 @@
 # MarkCraft
 
-A voxel rescue mission, built in Three.js. Save the professor, fight the Taleb dragon, watch N.W.A. and 2 Live Crew perform on twin neon stages, and tour Harvard Yard \u2014 now with Columbia Law School and LIS3353 posters scattered across the quad.
+> A voxel rescue mission. Built in Three.js. Save the professor, fight the Taleb dragon, tour Harvard Yard.
 
-## Run it locally (zero hassle)
+[![Deploy](https://github.com/evan555555555555555/markcraft-clone/actions/workflows/deploy.yml/badge.svg)](https://github.com/evan555555555555555/markcraft-clone/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-You need [Node.js 18 or newer](https://nodejs.org/). After that:
+## **[▶ Play it now](https://evan555555555555555.github.io/markcraft-clone/)**
+
+![MarkCraft screenshot](public/screenshot.png)
+
+## The lore
+
+Steve got fired for a bash assignment he forgot to grade. You are **Unc Marks**, the only Harvard economist with the moral fortitude to rescue him. Also you have a pickaxe.
+
+The zombies are **Adam Smith**. Hit one — it drops a pamphlet on the invisible hand. Collect 100 to unlock a Harvard Economics degree. It does nothing. Welcome to economics. Kill enough of them and they respawn as **Karl Marx**. Now they're hitting you.
+
+The final boss is the **Nassim Taleb dragon**. He attacks anyone who prepared for the fight. He sets you on fire. He tweets about it.
+
+**Your mission:** slay the dragon, get Unc Marks unblocked on Twitter, pass economics.
+
+## Features
+
+- Procedural voxel world with biomes (tundra, temperate, jungle, desert)
+- Harvard Yard campus with Columbia Law and LIS3353 posters
+- Voxel NPCs: professors, zombies, dean, 2 Live Crew, N.W.A., Linus Torvalds
+- Taleb dragon boss fight
+- In-game music player (N.W.A. on the boombox — press `M` to toggle, `N` for next track)
+- Terraforming: place and break blocks
+- Save/load your world (`F1` / `F2`)
+- Dev panel for tweaking physics, biomes, draw distance
+- Fireworks, snow, speech bubbles, the works
+
+## Play locally
+
+Requires [Node.js 18+](https://nodejs.org/).
 
 ```bash
+git clone https://github.com/evan555555555555555/markcraft-clone.git
+cd markcraft-clone
 npm install
 npm start
 ```
 
-Then open the URL it prints (usually <http://localhost:5173>).
+Open <http://localhost:5173>.
 
-## Or build a static site
+## Build a standalone copy
 
 ```bash
 npm run build
 ```
 
-The built site lands in `dist/`. Because `vite.config.js` uses a relative base, you can open `dist/index.html` directly in a browser \u2014 no server required. You can zip the whole `dist/` folder and email it.
+The `dist/` folder is fully self-contained — open `dist/index.html` in any browser, or zip it and email it. `vite.config.js` uses a relative base so no server config needed.
 
 ## Controls
 
@@ -28,7 +60,7 @@ The built site lands in `dist/`. Because `vite.config.js` uses a relative base, 
 | `WASD` | Move |
 | `SHIFT` | Sprint |
 | `SPACE` | Jump |
-| `1`-`8` | Select block |
+| `1`–`8` | Select block |
 | `0` | Pickaxe |
 | `M` | Toggle music |
 | `N` | Next track |
@@ -37,11 +69,11 @@ The built site lands in `dist/`. Because `vite.config.js` uses a relative base, 
 | `F1` / `F2` | Save / load |
 | `F10` | Spectator (orbit) camera |
 
-Click anywhere on the world to grab the mouse. If pointer lock is blocked (mobile, certain corporate browsers, etc.), the game stays in spectator mode and you can still see the scene.
+Click anywhere to grab the mouse. If pointer lock is blocked (mobile, some corporate browsers), hit `F10` for spectator mode.
 
-## Add more music
+## Add your own music
 
-Drop new `.mp3` files into `public/audio/` and add them to the `TRACKS` array at the top of [`scripts/audio.js`](scripts/audio.js):
+Drop an `.mp3` into `public/audio/` and add it to the `TRACKS` array in [`scripts/audio.js`](scripts/audio.js):
 
 ```js
 export const TRACKS = [
@@ -50,15 +82,27 @@ export const TRACKS = [
 ];
 ```
 
-The album switcher in the top-left corner will pick them up automatically. Use the prev / play / next buttons or hit `N` to skip tracks.
+The track switcher in the top-left picks them up automatically.
+
+## Contributing
+
+PRs welcome. See **[CONTRIBUTING.md](CONTRIBUTING.md)** for how to get started, what's in scope, and where the easy wins are. Short version: fork, branch, code, `npm run build`, open a PR.
+
+Good first issues: more music tracks, more NPCs, funnier speech bubbles, new blocks, bug fixes.
 
 ## Troubleshooting
 
-- **Static / black screen on boot**: the loader detects WebGL and shows a friendly error if it's missing or disabled. Try a different browser (Chrome / Firefox), update graphics drivers, or hit the "RETRY" button.
-- **Stuck on "click to play"**: that overlay needs a single click to grab the mouse. If pointer lock is blocked entirely, press `F10` for spectator camera.
-- **No sound**: most browsers require a user gesture before audio plays \u2014 the loading screen's `[ ENTER MARKCRAFT ]` button counts. If music still doesn't play, hit `M` to retry, or use the play button in the corner.
-- **Slow on a big map**: open the dev panel with `U` and lower `Draw Distance` under World.
+- **Black screen on boot** — the loader detects WebGL and shows a friendly error if it's missing. Try a different browser (Chrome / Firefox), update graphics drivers, or hit **RETRY**.
+- **Stuck on "click to look around"** — single-click the page to grab the mouse. If pointer lock is blocked entirely, press `F10` for spectator camera.
+- **No sound** — browsers require a user gesture before audio plays. The loading screen's **[ ENTER MARKCRAFT ]** button counts. If music still doesn't play, hit `M` or use the play button.
+- **Slow on a big map** — press `U`, lower **Draw Distance** under World.
 
 ## Credits
 
-Built on top of [dgreenheck/minecraft-threejs-clone](https://github.com/dgreenheck/minecraft-threejs-clone). Voxel characters, Harvard / Columbia campus, dragon, stages, fireworks, music switcher, and bulletproof boot all custom.
+Built on top of [dgreenheck/minecraft-threejs-clone](https://github.com/dgreenheck/minecraft-threejs-clone) — voxel engine, chunking, physics, biomes, save/load. Everything else (Harvard / Columbia campus, Taleb dragon, voxel characters, stages, fireworks, music switcher, loading screen, speech bubbles) is custom for MarkCraft.
+
+~90% of the MarkCraft code was written with Claude Code. That part was fast. The other 10% — port binding, asset loading, boot order — took all the time.
+
+## License
+
+[MIT](LICENSE) — do whatever. If you ship something based on this, a link back is nice but not required.
